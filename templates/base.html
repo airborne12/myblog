@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>{% block title %}{% endblock title %}</title>
+
+    <link rel="stylesheet" href="/static/css/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/static/css/blueprint/print.css" type="text/css" media="print" />	
+    <!--[if lt IE 8]><link rel="stylesheet" href="/static/css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+
+    <link rel="stylesheet" href="/static/css/base.css" type="text/css" />
+
+    {% block pre_body %}{% endblock pre_body %}    
+</head>
+
+<body class="{% block pagetype %}{% endblock pagetype %}">
+    <div class="container">
+
+        <div class="span-24 last" id="header"> 
+            <h1 id="blog-title">
+            <a href="/">Jack's Blog</a>
+            </h1>
+            <span "blog-descripition">有关Linux,Django,Python,Vim什么的</span>
+            {% block header_extra %}{% endblock header_extra %} 
+        </div>
+
+        <div class="span-25" id="nav">
+	  <li><a href="{% url core.views.list_posts %}">Blogs</a></li>
+	  <li><a href="{% url core.views.new_post %}">写博客</a></li>
+	  {% if user.is_authenticated %}
+	  <li><a href="{% url django.contrib.auth.views.logout %}">登出</a></li>
+	  {% else %}
+	  <li><a href="{% url django.contrib.auth.views.login %}">登录</a></li>
+	  {% endif %}
+        </div>
+
+        <div class="span-18" id="main-wrapper">
+            {% block content %}{% endblock content %} 
+        </div>
+
+        <div class="span-6 last" id="navi-wrapper">
+            {% block navi %}{% endblock navi %}
+        </div>
+
+
+        <div class="span-24 last" id="footer"> 
+            {% block footer_extra %}{% endblock footer_extra %} 
+            <div id="powered-by"> 
+                This blog is powered by
+                <a href="http://github.com/airborne12/myblog/">airborne</a> / <a href="http://djangoproject.com">Django</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

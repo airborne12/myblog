@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %} 发布文字 {% endblock %}   
+
+{% block content %}
+<form action="{% url core.views.new_post %}" method="post">
+    {% csrf_token %} 
+    <div class="field">
+        <label for="id_caption">Title: </label>
+        {% if form.title.errors %}
+        <div class="alert alert-error">
+            {{ form.title.errors }}          
+        </div>
+        {% endif %}
+        {{ form.title }}
+    </div>
+    <div class="field">        
+        <label for="id_content">Content: </label>
+        {% if form.content.errors %}
+        <div class="alert alert-error">
+            {{ form.content.errors }}
+        </div>
+        {% endif %}
+        {{ form.content }}
+    </div>
+    <div class="field">
+        <label for="id_tag">tags</label>
+        {% if tag.tag_name.errors %}
+        <div class="alert alert-error">
+            {{ tag.tag_name.errors }}
+        </div>
+        {% endif %}
+        {{ tag.tag_name }}
+    </div>
+    <div class="form-actions">
+        <input type="submit" value="save and add">
+    </div>
+</form>
+{% endblock %}
+{% block conten %}
+    <form action="{% url core.views.new_post %}" method="post" accept-charset="utf-8">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% for field in form %}
+            {{ field.label_tag}}:{{field}}
+            {{ field.errors }}
+        {% endfor %}
+        <p><input type="submit" value="Post!"/></p>
+    </form>
+{% endblock %}
