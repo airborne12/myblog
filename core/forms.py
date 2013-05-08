@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
 
     def save(self, commit = True):
         post = super(PostForm, self).save(commit = False)
-        #post.user = user
+        post.user = user
 
         if commit:
             post.save()

@@ -21,14 +21,14 @@
             <h1 id="blog-title">
             <a href="/">Jack's Blog</a>
             </h1>
-            <span "blog-descripition">有关Linux,Django,Python,Vim什么的</span>
+            <span "blog-descripition">Talk is cheap,show me your code.</span>
             {% block header_extra %}{% endblock header_extra %} 
         </div>
 
         <div class="span-25" id="nav">
 	  <li><a href="{% url core.views.list_posts %}">Blogs</a></li>
-	  <li><a href="{% url core.views.new_post %}">写博客</a></li>
 	  {% if user.is_authenticated %}
+	  <li><a href="{% url core.views.new_post %}">写博客</a></li>
 	  <li><a href="{% url django.contrib.auth.views.logout %}">登出</a></li>
 	  {% else %}
 	  <li><a href="{% url django.contrib.auth.views.login %}">登录</a></li>

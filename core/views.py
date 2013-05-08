@@ -6,13 +6,13 @@ from django.core.urlresolvers import reverse
 from forms import PostForm
 from models import Post
 
-#@login_required
+@login_required
 def new_post(request):
     form = PostForm()
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            #form.save(request.user)
+            form.save(request.user)
             form.save()
             return HttpResponseRedirect(reverse('core.views.list_posts'))
     return render_to_response('new_post.html',
