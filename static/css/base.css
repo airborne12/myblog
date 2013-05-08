@@ -1,7 +1,9 @@
 #header{margin:20px 0 20px 0;}
-#main-wrapper{margin:20px 0 20px 0;}
+#main-wrapper{margin:0 0 20px 0;}
 #powered-by{text-align:center;}
 #footer{border-top:1px solid black;}
 .entry-meta-info{color:#cccccc;margin-top:-20px;margin-bottom:20px;}
 a{color:black;}
 a:hover{color:red;}
+.nav_bar{float:right;margin:10px;}
+.nav_div{position:fixed;right:150px}
