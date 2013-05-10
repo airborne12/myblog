@@ -1,0 +1,29 @@
+{% extends base_template %}
+{% load sophie_parts %}
+
+{% block title %}
+{{ category.title }} - {{ blog.title }}
+{% endblock title %}
+ 
+{% block pre_body %}
+    <meta name="description" content="{{ category.description }}" />
+{% endblock pre_body %}
+
+{% block navi %}
+{% sophie_shows_feed_of blog %}
+{% sophie_lists_category_of blog %}
+{% endblock navi %}
+
+{% block main %}
+<div id="page-description">
+    The content of this page is under {{ category.title }}.
+</div>
+
+<div id="entry_list">
+    {% sophie_lists_entries_in page.object_list blog "But, there's nothing here yet, too bad." %}
+</div>
+    
+<div id="pagination">
+    {% sophie_links_siblings_of page blog 'sophie_category_details_url' category.slug %}
+</div>
+{% endblock main %}

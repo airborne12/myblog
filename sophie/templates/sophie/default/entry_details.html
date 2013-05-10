@@ -1,0 +1,55 @@
+{% extends base_template %}
+{% load sophie_parts %}
+{% block pre_body %}
+{% if blog.disqus_shortname %}
+    <meta name="description" content="{{ entry.teaser_html|striptags|safe }}" />
+    <script type="text/javascript">
+    var disqus_shortname = '{{ blog.disqus_shortname }}';
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.src = 'http://disqus.com/forums/{{ blog.disqus_shortname }}/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+{% endif %}
+{% endblock pre_body %}
+
+{% block title %}
+{{ entry.title }} - {{ blog.title }}
+{% endblock title %}
+
+{% block navi %}
+{% sophie_shows_feed_of blog %}
+{% sophie_lists_category_of blog %}
+{% endblock navi %}
+
+{% block main %}
+<h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2>
+<div class="entry-meta-info">
+    Published @
+    <span class="entry-pub-time">
+        {{ entry.pub_date|date:"DATETIME_FORMAT" }}
+    </span>
+    by
+    <span class="entry-author">Jack</span>
+</div>
+<div class="entry-body">{{ entry.body_html|safe }}</div>
+
+{% if entry.allow_comment and blog.disqus_shortname %}
+<hr />
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  /**
+    * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread] 
+    */
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://danmarner-cnblog.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=danmarner-cnblog">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+{% endif %}
+
+{% endblock main %}

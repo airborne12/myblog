@@ -11,15 +11,17 @@ import os
 SECRET_KEY = '=r-$b*8hglm+858&9t043hlm6-&6-3d3vfc4((7yd0dbrakhvi'
 
 INSTALLED_APPS = (
-#    'django.contrib.comments',
-#    'django.contrib.sites',
-#    'django.contrib.markup',
-
+    'django.contrib.sitemaps',
+    'django.contrib.comments',
+    'django.contrib.sites',
+    'django.contrib.markup',
+    'django.contrib.admin',
     'djangotoolbox',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'core',
+    #'core',
+    'sophie',
 )
 
 if has_djangoappengine:
@@ -29,6 +31,7 @@ TEST_RUNNER = 'djangotoolbox.test.CapturingTestSuiteRunner'
 
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
+#MEDIA_URL = "/media/"#os.path.join(os.path.dirname(__file__), 'media')
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 STATICFILES_DIRS = (
     os.path.join(os.path.dirname(__file__),'static'), 
@@ -39,4 +42,4 @@ LOGOUT_URL = '/logout/'
 LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'urls'
-#SITE_ID=1
+SITE_ID=1
