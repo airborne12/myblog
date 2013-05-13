@@ -39,4 +39,10 @@ indexes:
   - name: category_id
   - name: status
   - name: pub_date
+
+- kind: sophie_entry
+  properties:
+  - name: category_id
+  - name: status
+  - name: pub_date
     direction: desc

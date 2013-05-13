@@ -10,6 +10,7 @@ import os
 
 SECRET_KEY = '=r-$b*8hglm+858&9t043hlm6-&6-3d3vfc4((7yd0dbrakhvi'
 
+SOPHIE_ENABLES_MULTIBLOG = False
 INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.comments',

@@ -13,6 +13,11 @@ def sophie_lists_category_of(blog):
 def sophie_shows_feed_of(blog):
     return { 'blog': blog }
 
+@register.inclusion_tag('sophie/templatetags/shows_about.tag')
+def sophie_shows_about(blog):
+    return { 'blog': blog }
+
+
 @register.inclusion_tag('sophie/templatetags/links_siblings_of.tag')
 def sophie_links_siblings_of(page, blog, urlname, part_slug=None):
     # conditional operatior hack xx and yy or zz == xx ? yy : zz

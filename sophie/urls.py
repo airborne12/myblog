@@ -66,5 +66,5 @@ urlpatterns += patterns('sophie.views',
     url(r'^%sentry/%s/$' % (blog_bit, slug_bit % 'entry'), 
         'show_entry', name='sophie_entry_details_url'),
     url(r'^%s$' % blog_bit, 'show_index', name='sophie_blog_index_url'),
+    url(r'^%sabout$' % blog_bit, 'show_about', name='sophie_blog_about_url'),
 )
-

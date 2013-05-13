@@ -45,6 +45,16 @@ def show_category(request, blog_slug=None, category_slug=None, page_num=1):
     context['base_template'] = select_template( route('base') )
     return render_to_response( route('category_details'), {}, context )
 
+def show_about(request, blog_slug=None):
+    blog = Blog.get_blog(blog_slug)
+    route = curry(route_template, blog_slug=blog.slug)
+    context = RequestContext(request, {
+        'blog': blog,
+        'multiblog': multiblog_enabled,
+    })
+    context['base_template'] = select_template( route('base') )
+    return render_to_response( route('about'), {}, context )    
+
 def show_entry(request, entry_slug, blog_slug=None):
     blog = Blog.get_blog(blog_slug)
     entry = get_object_or_404(Entry, slug=entry_slug)

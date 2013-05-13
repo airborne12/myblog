@@ -88,6 +88,13 @@ class Blog(models.Model):
             c.update({ 'blog_slug': self.slug })
         return ('sophie_blog_feed_url', (), c)
 
+    @models.permalink
+    def get_about(self):
+        c = {}
+        if multiblog_enabled:
+            c.update({ 'blog_slug': self.slug })
+        return ('sophie_blog_about_url', (), c)
+    
     def get_feed(self):
         if self.feed_service:
             return self.feed_service
